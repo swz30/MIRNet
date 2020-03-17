@@ -49,11 +49,15 @@ Experiments are performed on five real image datasets for different image proces
 
 ### Image Denoising
 
+<img src = "https://i.imgur.com/te123qk.png" >
+
 ### Image Super-resolution 
+
+<img src = "https://i.imgur.com/pBdUPXa.png" >
 
 ### Image Enhancement
 
-
+<img src = "https://i.imgur.com/TZRBlux.png" >
 
 ## Citation
 If you use MIRNet, please consider citing:
