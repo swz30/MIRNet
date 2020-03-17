@@ -6,9 +6,9 @@ This repository is for MIRNet introduced in the following paper
 
 **Paper**: https://arxiv.org/abs/2003.06792
 
-**Supplementary**:
+**Supplementary**: [pdf](https://drive.google.com/file/d/1QIKp7h7Rd85odaS6bDoeDGXb0VLKo8I9/view?usp=sharing)
 
-## Code Releasing Soon! 
+## Codes and Pre-trained Models Releasing Soon! 
 
 ## Abstract
 
