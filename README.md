@@ -1,4 +1,4 @@
-# Learning Enriched Features for Real Image Restoration and Enhancement
+# Learning Enriched Features for Real Image Restoration and Enhancement (ECCV 2020)
 
 [Syed Waqas Zamir](https://scholar.google.es/citations?user=WNGPkVQAAAAJ&hl=en), [Aditya Arora](https://adityac8.github.io/), [Salman Khan](https://salman-h-khan.github.io/), [Munawar Hayat](https://scholar.google.com/citations?user=Mx8MbWYAAAAJ&hl=en), [Fahad Shahbaz Khan](https://scholar.google.es/citations?user=zvaeYnUAAAAJ&hl=en), [Ming-Hsuan Yang](https://scholar.google.com/citations?user=p9-ohHsAAAAJ&hl=en), and [Ling Shao](https://scholar.google.com/citations?user=z84rLjoAAAAJ&hl=en)
 
@@ -58,11 +58,11 @@ Experiments are performed on five real image datasets for different image proces
 ## Citation
 If you use MIRNet, please consider citing:
 
-    @article{Zamir2020MIRNet,
+    @inproceedings{Zamir2020MIRNet,
         title={Learning Enriched Features for Real Image Restoration and Enhancement},
         author={Syed Waqas Zamir and Aditya Arora and Salman Khan and Munawar Hayat
                 and Fahad Shahbaz Khan and Ming-Hsuan Yang and Ling Shao},
-        journal={arXiv preprint arXiv:2003.06792},
+        booktitle={ECCV},
         year={2020}
     }
 
