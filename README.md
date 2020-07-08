@@ -6,7 +6,6 @@
 
 **Supplementary**: [pdf](https://drive.google.com/file/d/1QIKp7h7Rd85odaS6bDoeDGXb0VLKo8I9/view?usp=sharing)
 
-## Codes and Pre-trained Models Releasing Soon! 
 
 > **Abstract:** *With the goal of recovering high-quality image content from its degraded version, image restoration enjoys numerous applications, such as in surveillance, computational photography, medical imaging, and remote sensing.  Recently, convolutional neural networks (CNNs) have achieved dramatic improvements over conventional approaches for image restoration task. Existing CNN-based methods typically operate either on full-resolution or on progressively low-resolution representations. In the former case, spatially precise but contextually less robust results are achieved, while in the latter case, semantically reliable but spatially less accurate outputs are generated. In this paper, we present a novel architecture with the collective goals of maintaining spatially-precise high-resolution representations through the entire network, and receiving strong contextual information from the low-resolution representations.  The core of our approach is a multi-scale residual block containing several key elements: (a) parallel multi-resolution convolution streams for extracting multi-scale features, (b) information exchange across the multi-resolution streams, (c) spatial and channel attention mechanisms for capturing contextual information, and (d) attention based multi-scale feature aggregation. In the nutshell, our approach learns an enriched set of features that combines contextual information from multiple scales, while simultaneously preserving the high-resolution spatial details. Extensive experiments on five real image benchmark datasets demonstrate that our method, named as MIRNet, achieves state-of-the-art results for a variety of image processing tasks, including image denoising, super-resolution and image enhancement.* 
 
@@ -39,9 +38,65 @@
   </tr>
 </table>
 
+## Installation
+The model is built in PyTorch 1.1.0 and tested on Ubuntu 16.04 environment (Python3.7, CUDA9.0, cuDNN7.5).
+
+For installing, follow these intructions
+```
+sudo apt-get install cmake build-essential libjpeg-dev libpng-dev
+conda create -n pytorch1 python=3.7
+conda activate pytorch1
+conda install pytorch=1.1 torchvision=0.3 cudatoolkit=9.0 -c pytorch
+pip install matplotlib scikit-image yacs lycon natsort h5py tqdm
+```
+
+## Evaluation
+- You can download, at once, the complete repository of MIRNet (including pre-trained models, datasets, results, etc) from this Google Drive  [link](https://drive.google.com/drive/folders/1C2XCufoxxckQ29EkxERFPxL8R3Kx68ZG?usp=sharing), or evaluate individual tasks with the following instructions:
+
+### Image Denoising 
+- Download the [model](https://drive.google.com/file/d/13PGkg3yaFQCvz6ytN99Heh_yyvfxRCdG/view?usp=sharing) and place it in ./pretrained_models/denoising/
+
+#### Testing on SIDD dataset
+- Download sRGB [images](https://drive.google.com/drive/folders/1j5ESMU0HJGD-wU6qbEdnt569z7sM3479?usp=sharing) of SIDD and place them in ./datasets/sidd/
+- Run
+```
+python test_sidd_rgb.py --save_images
+```
+#### Testing on DND dataset
+- Download sRGB [images](https://drive.google.com/drive/folders/1-IBw_J0gdlM6AlqSm3Z7XWTXR-So4xzp?usp=sharing) of DND and place them in ./datasets/dnd/
+- Run
+```
+python test_dnd_rgb.py --save_images
+```
+### Image Super-resolution
+- Download the [models](https://drive.google.com/drive/folders/1yMtXbk6RXoFfmeRRGu1XfNFSHH6bSUoR?usp=sharing) and place them in ./pretrained_models/super_resolution/
+- Download [images](https://drive.google.com/drive/folders/1mAr0YCqBJFXsnOnOp0WWxkAiGF9DQAe8?usp=sharing) of different scaling factor and place them in ./datasets/super_resolution/
+- Run
+```
+python test_super_resolution.py --save_images --scale 3
+python test_super_resolution.py --save_images --scale 4
+```
+
+### Image Enhancement 
+#### Testing on LOL dataset
+- Download the LOL [model](https://drive.google.com/file/d/1t_FcBuMZD5th2KWVVNXYGJ7bMz5ZAWvF/view?usp=sharing) and place it in ./pretrained_models/enhancement/
+- Download [images](https://drive.google.com/drive/folders/1LR6J4tkG6DLHqsipsMgHgU_p1xOZjdAA?usp=sharing) of LOL dataset and place them in ./datasets/lol/
+- Run
+```
+python test_enhancement.py --save_images --input_dir ./datasets/lol/ --result_dir ./results/enhancement/lol/ --weights ./pretrained_models/enhancement/model_lol.pth
+```
+#### Testing on Adobe-MIT FiveK dataset
+- Download the fiveK [model](https://drive.google.com/file/d/1BsXOvhMz2z80E_V93dgD6QaEspZE0w-u/view?usp=sharing) and place it in ./pretrained_models/enhancement/
+- Download some sample [images](https://drive.google.com/drive/folders/1tyrELge59GdhZ18VR6yFwVb5Kenq2hSd?usp=sharing) of fiveK dataset and place them in ./datasets/fivek_sample_images/
+- Run
+```
+python test_enhancement.py --save_images --input_dir ./datasets/fivek_sample_images/ --result_dir ./results/enhancement/fivek/ --weights ./pretrained_models/enhancement/model_fivek.pth
+```
+
+
 
 ## Results
-Experiments are performed on five real image datasets for different image processing tasks including, image denoising, super-resolution and image enhancement.
+Experiments are performed on five real image datasets for different image processing tasks including, image denoising, super-resolution and image enhancement. Images produced by MIRNet can be downloaded from Google Drive [link](https://drive.google.com/drive/folders/1z6bFP7ydBaQOPmk8n1byYY0xcLx7aBHp?usp=sharing).
 
 ### Image Denoising
 
