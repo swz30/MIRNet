@@ -20,7 +20,7 @@ from networks.MIRNet_model import MIRNet
 from dataloaders.data_rgb import get_test_data_SR
 import utils
 import lycon
-
+from skimage import img_as_ubyte
 
 parser = argparse.ArgumentParser(description='Super-resolve images of RealSR dataset')
 parser.add_argument('--input_dir', default='./datasets/realSR/x',
@@ -36,7 +36,6 @@ parser.add_argument('--save_images', action='store_true', help='Save super-resol
 
 args = parser.parse_args()
 
-
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus
 
@@ -47,8 +46,6 @@ utils.mkdir(output_dir)
 test_dataset = get_test_data_SR(args.input_dir+args.scale+'/LR/')
 
 test_loader = DataLoader(dataset=test_dataset, batch_size=args.bs, shuffle=False, num_workers=8, drop_last=False)
-
-
 
 model_restoration = MIRNet()
 
@@ -62,7 +59,6 @@ model_restoration=nn.DataParallel(model_restoration)
 
 model_restoration.eval()
 
-
 with torch.no_grad():
     for ii, data_test in enumerate(tqdm(test_loader), 0):
         LR_img = data_test[0].cuda()
@@ -75,6 +71,5 @@ with torch.no_grad():
 
         if args.save_images:
             for batch in range(len(LR_img)):
-                #temp = np.concatenate((LR_img[batch]*255, rgb_restored[batch]*255),axis=1)
-                denoised_img = rgb_restored[batch]*255
-                lycon.save(os.path.join(output_dir, filenames[batch][:-4]+'.png'), denoised_img.astype(np.uint8))
+                sr_img = img_as_ubyte(rgb_restored[batch])
+                lycon.save(os.path.join(output_dir, filenames[batch][:-4]+'.png'), sr_img)

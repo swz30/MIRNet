@@ -20,6 +20,7 @@ from networks.MIRNet_model import MIRNet
 from dataloaders.data_rgb import get_validation_data
 import utils
 import lycon
+from skimage import img_as_ubyte
 
 parser = argparse.ArgumentParser(description='Image Enhancement using MIRNet')
 # parser.add_argument('--input_dir', default='./datasets/lol/', type=str, help='Directory of validation images')
@@ -45,8 +46,6 @@ utils.mkdir(args.result_dir)
 test_dataset = get_validation_data(args.input_dir)
 test_loader = DataLoader(dataset=test_dataset, batch_size=args.bs, shuffle=False, num_workers=8, drop_last=False)
 
-
-
 model_restoration = MIRNet()
 
 utils.load_checkpoint(model_restoration,args.weights)
@@ -57,7 +56,6 @@ model_restoration.cuda()
 model_restoration=nn.DataParallel(model_restoration)
 
 model_restoration.eval()
-
 
 with torch.no_grad():
     psnr_val_rgb = []
@@ -76,9 +74,8 @@ with torch.no_grad():
 
         if args.save_images:
             for batch in range(len(rgb_gt)):
-                #temp = np.concatenate((rgb_noisy[batch]*255, rgb_restored[batch]*255, rgb_gt[batch]*255),axis=1)
-                denoised_img = rgb_restored[batch]*255
-                lycon.save(args.result_dir + filenames[batch][:-4] + '.png', denoised_img.astype(np.uint8))
+                enhanced_img = img_as_ubyte(rgb_restored[batch])
+                lycon.save(args.result_dir + filenames[batch][:-4] + '.png', enhanced_img)
             
 psnr_val_rgb = sum(psnr_val_rgb)/len(psnr_val_rgb)
 print("PSNR: %.2f " %(psnr_val_rgb))

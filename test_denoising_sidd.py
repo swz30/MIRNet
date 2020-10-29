@@ -23,6 +23,7 @@ from networks.MIRNet_model import MIRNet
 from dataloaders.data_rgb import get_validation_data
 import utils
 import lycon
+from skimage import img_as_ubyte
 
 parser = argparse.ArgumentParser(description='RGB denoising evaluation on the validation set of SIDD')
 parser.add_argument('--input_dir', default='./datasets/sidd/',
@@ -77,9 +78,8 @@ with torch.no_grad():
 
         if args.save_images:
             for batch in range(len(rgb_gt)):
-                #temp = np.concatenate((rgb_noisy[batch]*255, rgb_restored[batch]*255, rgb_gt[batch]*255),axis=1)
-                denoised_img = rgb_restored[batch]*255
-                lycon.save(args.result_dir + filenames[batch][:-4] + '.png', denoised_img.astype(np.uint8))
+                denoised_img = img_as_ubyte(rgb_restored[batch])
+                lycon.save(args.result_dir + filenames[batch][:-4] + '.png', denoised_img)
             
 psnr_val_rgb = sum(psnr_val_rgb)/len(psnr_val_rgb)
 print("PSNR: %.2f " %(psnr_val_rgb))
