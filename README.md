@@ -52,7 +52,7 @@ pip install matplotlib scikit-image opencv-python yacs joblib natsort h5py tqdm
 ```
 
 ## Training
-1. Download the SIDD-Medium dataset from (here)[https://www.eecs.yorku.ca/~kamel/sidd/dataset.php]
+1. Download the SIDD-Medium dataset from [here](https://www.eecs.yorku.ca/~kamel/sidd/dataset.php)
 2. Generate image patches
 ```
 python generate_patches_SIDD.py --ps 256 --num_patches 300 --num_cores 10
