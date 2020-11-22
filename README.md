@@ -51,6 +51,34 @@ conda install pytorch=1.1 torchvision=0.3 cudatoolkit=9.0 -c pytorch
 pip install matplotlib scikit-image yacs lycon natsort h5py tqdm
 ```
 
+## Training
+1. Download the SIDD dataset from (here)[https://www.eecs.yorku.ca/~kamel/sidd/dataset.php]
+2. After extracting zip file, you will have the following directory structure under `SIDD_Medium_Srgb`.
+```
+Data
+├── 0001_001_S6_00100_00060_3200_L
+│   ├── 0001_GT_SRGB_010.PNG
+│   ├── 0001_GT_SRGB_011.PNG
+│   ├── 0001_NOISY_SRGB_010.PNG
+│   └── 0001_NOISY_SRGB_011.PNG
+├── 0002_001_S6_00100_00020_3200_N
+│   ├── 0002_GT_SRGB_010.PNG
+│   ├── 0002_GT_SRGB_011.PNG
+│   ├── 0002_NOISY_SRGB_010.PNG
+│   └── 0002_NOISY_SRGB_011.PNG
+├── ...
+└── 0200_010_GP_01600_03200_5500_N
+    ├── 0200_GT_SRGB_010.PNG
+    ├── 0200_GT_SRGB_011.PNG
+    ├── 0200_NOISY_SRGB_010.PNG
+    └── 0200_NOISY_SRGB_011.PNG
+```
+
+3. Generate image patches by running
+```
+python generate_patches_SIDD.py --ps 256 --num_patches 300 --num_cores 10
+```
+
 ## Evaluation
 You can download, at once, the complete repository of MIRNet (including pre-trained models, datasets, results, etc) from this Google Drive  [link](https://drive.google.com/drive/folders/1C2XCufoxxckQ29EkxERFPxL8R3Kx68ZG?usp=sharing), or evaluate individual tasks with the following instructions:
 
