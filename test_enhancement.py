@@ -19,7 +19,6 @@ import scipy.io as sio
 from networks.MIRNet_model import MIRNet
 from dataloaders.data_rgb import get_validation_data
 import utils
-import lycon
 from skimage import img_as_ubyte
 
 parser = argparse.ArgumentParser(description='Image Enhancement using MIRNet')
@@ -75,7 +74,7 @@ with torch.no_grad():
         if args.save_images:
             for batch in range(len(rgb_gt)):
                 enhanced_img = img_as_ubyte(rgb_restored[batch])
-                lycon.save(args.result_dir + filenames[batch][:-4] + '.png', enhanced_img)
+                utils.save_img(args.result_dir + filenames[batch][:-4] + '.png', enhanced_img)
             
 psnr_val_rgb = sum(psnr_val_rgb)/len(psnr_val_rgb)
 print("PSNR: %.2f " %(psnr_val_rgb))

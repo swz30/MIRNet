@@ -20,7 +20,6 @@ import scipy.io as sio
 from networks.MIRNet_model import MIRNet
 from dataloaders.data_rgb import get_test_data
 import utils
-import lycon
 from utils.bundle_submissions import bundle_submissions_srgb_v1
 from skimage import img_as_ubyte
 
@@ -76,7 +75,7 @@ with torch.no_grad():
         if args.save_images:
             for batch in range(len(rgb_noisy)):
                 denoised_img = img_as_ubyte(rgb_restored[batch])
-                lycon.save(args.result_dir + 'png/'+ filenames[batch][:-4] + '.png', denoised_img)
+                utils.save_img(args.result_dir + 'png/'+ filenames[batch][:-4] + '.png', denoised_img)
                 save_file = os.path.join(args.result_dir+ 'matfile/', filenames[batch][:-4] +'.mat')
                 sio.savemat(save_file, {'Idenoised_crop': np.float32(rgb_restored[batch])})
 

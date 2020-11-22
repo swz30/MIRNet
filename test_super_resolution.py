@@ -19,7 +19,6 @@ import scipy.io as sio
 from networks.MIRNet_model import MIRNet
 from dataloaders.data_rgb import get_test_data_SR
 import utils
-import lycon
 from skimage import img_as_ubyte
 
 parser = argparse.ArgumentParser(description='Super-resolve images of RealSR dataset')
@@ -72,4 +71,4 @@ with torch.no_grad():
         if args.save_images:
             for batch in range(len(LR_img)):
                 sr_img = img_as_ubyte(rgb_restored[batch])
-                lycon.save(os.path.join(output_dir, filenames[batch][:-4]+'.png'), sr_img)
+                utils.save_img(os.path.join(output_dir, filenames[batch][:-4]+'.png'), sr_img)
