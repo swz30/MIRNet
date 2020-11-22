@@ -65,7 +65,7 @@ python generate_patches_SIDD.py --ps 256 --num_patches 300 --num_cores 10
 cd pytorch-gradual-warmup-lr; python setup.py install; cd ..
 ```
 
-5. Train your model with default arguments by running
+4. Train your model with default arguments by running
 
 ```
 python train_denoising.py
