@@ -71,7 +71,7 @@ cd pytorch-gradual-warmup-lr; python setup.py install; cd ..
 python train_denoising.py
 ```
 
-**Note:** Our model is trained with 2 Nvidia Tesla-V100 GPUs. See #5 for changing the model parameters.  
+**Note:** Our model is trained with 2 Nvidia Tesla-V100 GPUs. See [#5](https://github.com/swz30/MIRNet/issues/5) for changing the model parameters.  
 
 ## Evaluation
 You can download, at once, the complete repository of MIRNet (including pre-trained models, datasets, results, etc) from this Google Drive  [link](https://drive.google.com/drive/folders/1C2XCufoxxckQ29EkxERFPxL8R3Kx68ZG?usp=sharing), or evaluate individual tasks with the following instructions:
