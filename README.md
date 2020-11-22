@@ -83,13 +83,13 @@ You can download, at once, the complete repository of MIRNet (including pre-trai
 - Download sRGB [images](https://drive.google.com/drive/folders/1j5ESMU0HJGD-wU6qbEdnt569z7sM3479?usp=sharing) of SIDD and place them in ./datasets/sidd/
 - Run
 ```
-python test_sidd_rgb.py --save_images
+python test_denoising_sidd.py --save_images
 ```
 #### Testing on DND dataset
 - Download sRGB [images](https://drive.google.com/drive/folders/1-IBw_J0gdlM6AlqSm3Z7XWTXR-So4xzp?usp=sharing) of DND and place them in ./datasets/dnd/
 - Run
 ```
-python test_dnd_rgb.py --save_images
+python test_denoising_dnd.py --save_images
 ```
 ### Image Super-resolution
 - Download the [models](https://drive.google.com/drive/folders/1yMtXbk6RXoFfmeRRGu1XfNFSHH6bSUoR?usp=sharing) and place them in ./pretrained_models/super_resolution/
