@@ -10,7 +10,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Generate patches from Full Resolution images')
 parser.add_argument('--src_dir', default='../SIDD_Medium_Srgb/Data', type=str, help='Directory for full resolution images')
-parser.add_argument('--tar_dir', default='../SIDD_patches',type=str, help='Directory for image patches')
+parser.add_argument('--tar_dir', default='../SIDD_patches/train',type=str, help='Directory for image patches')
 parser.add_argument('--ps', default=256, type=int, help='Image Patch Size')
 parser.add_argument('--num_patches', default=300, type=int, help='Number of patches per image')
 parser.add_argument('--num_cores', default=10, type=int, help='Number of CPU Cores')
