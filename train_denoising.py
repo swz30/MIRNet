@@ -182,7 +182,6 @@ for epoch in range(start_epoch, opt.OPTIM.NUM_EPOCHS + 1):
     print("------------------------------------------------------------------")
     print("Epoch: {}\tTime: {:.4f}\tLoss: {:.4f}\tLearningRate {:.6f}".format(epoch, time.time()-epoch_start_time,epoch_loss, scheduler.get_lr()[0]))
     print("------------------------------------------------------------------")
-    it_total+=1
 
     torch.save({'epoch': epoch, 
                 'state_dict': model_restoration.state_dict(),
