@@ -49,5 +49,5 @@ def load_start_epoch(weights):
 def load_optim(optimizer, weights):
     checkpoint = torch.load(weights)
     optimizer.load_state_dict(checkpoint['optimizer'])
-    for p in optimizer.param_groups: lr = p['lr']
-    return lr
+    # for p in optimizer.param_groups: lr = p['lr']
+    # return lr
