@@ -61,29 +61,26 @@ new_lr = opt.OPTIM.LR_INITIAL
 
 optimizer = optim.Adam(model_restoration.parameters(), lr=new_lr, betas=(0.9, 0.999),eps=1e-8, weight_decay=1e-8)
 
-######### Resume ###########
-if opt.TRAINING.RESUME:
-    path_chk_rest    = utils.get_last_path(model_dir, '_latest.pth')
-    utils.load_checkpoint(model_restoration,path_chk_rest)
-    start_epoch = utils.load_start_epoch(path_chk_rest) + 1
-    lr = utils.load_optim(optimizer, path_chk_rest)
-
-    for p in optimizer.param_groups: p['lr'] = lr
-    warmup = False
-    new_lr = lr
-    print('------------------------------------------------------------------------------')
-    print("==> Resuming Training with learning rate:",new_lr)
-    print('------------------------------------------------------------------------------')
-    scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, opt.OPTIM.NUM_EPOCHS-start_epoch+1, eta_min=1e-6)
-else:
-    warmup = True
-
 ######### Scheduler ###########
 if warmup:
     warmup_epochs = 3
     scheduler_cosine = optim.lr_scheduler.CosineAnnealingLR(optimizer, opt.OPTIM.NUM_EPOCHS-warmup_epochs, eta_min=1e-6)
     scheduler = GradualWarmupScheduler(optimizer, multiplier=1, total_epoch=warmup_epochs, after_scheduler=scheduler_cosine)
     scheduler.step()
+
+######### Resume ###########
+if opt.TRAINING.RESUME:
+    path_chk_rest    = utils.get_last_path(model_dir, '_latest.pth')
+    utils.load_checkpoint(model_restoration,path_chk_rest)
+    start_epoch = utils.load_start_epoch(path_chk_rest) + 1
+    utils.load_optim(optimizer, path_chk_rest)
+
+    for i in range(1, start_epoch):
+        scheduler.step()
+    new_lr = scheduler.get_lr()[0]
+    print('------------------------------------------------------------------------------')
+    print("==> Resuming Training with learning rate:", new_lr)
+    print('------------------------------------------------------------------------------')
 
 if len(device_ids)>1:
     model_restoration = nn.DataParallel(model_restoration, device_ids = device_ids)
