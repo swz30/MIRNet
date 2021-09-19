@@ -136,7 +136,7 @@ python test_enhancement.py --save_images --input_dir ./datasets/fivek_sample_ima
 ```
 
 
-### Results
+## Results
 
 Experiments are performed on five real image datasets for different image processing tasks including, image denoising, super-resolution and image enhancement. Images produced by MIRNet can be downloaded from Google Drive [link](https://drive.google.com/drive/folders/1z6bFP7ydBaQOPmk8n1byYY0xcLx7aBHp?usp=sharing).
 
