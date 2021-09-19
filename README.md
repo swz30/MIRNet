@@ -12,9 +12,21 @@
 
 <hr />
 
+### News
+
+- Keras Tutorial on MIRNet is available at https://keras.io/examples/vision/mirnet/ 
+
+- Video on Tensorflow Youtube channel https://youtu.be/BMza5yrwZ9s
+
+- Links to (unofficial) implementations are added [here](#other-implementations)
+
+<hr />
+
 > **Abstract:** *With the goal of recovering high-quality image content from its degraded version, image restoration enjoys numerous applications, such as in surveillance, computational photography, medical imaging, and remote sensing.  Recently, convolutional neural networks (CNNs) have achieved dramatic improvements over conventional approaches for image restoration task. Existing CNN-based methods typically operate either on full-resolution or on progressively low-resolution representations. In the former case, spatially precise but contextually less robust results are achieved, while in the latter case, semantically reliable but spatially less accurate outputs are generated. In this paper, we present a novel architecture with the collective goals of maintaining spatially-precise high-resolution representations through the entire network, and receiving strong contextual information from the low-resolution representations.  The core of our approach is a multi-scale residual block containing several key elements: (a) parallel multi-resolution convolution streams for extracting multi-scale features, (b) information exchange across the multi-resolution streams, (c) spatial and channel attention mechanisms for capturing contextual information, and (d) attention based multi-scale feature aggregation. In the nutshell, our approach learns an enriched set of features that combines contextual information from multiple scales, while simultaneously preserving the high-resolution spatial details. Extensive experiments on five real image benchmark datasets demonstrate that our method, named as MIRNet, achieves state-of-the-art results for a variety of image processing tasks, including image denoising, super-resolution and image enhancement.* 
 
-## Network Architecture
+<details>
+  <summary> <strong>Network Architecture</strong> (click to expand) </summary>
+ 
 <p align="center">
   <img src = "https://i.imgur.com/vmywppl.png" width="700">
   <br/>
@@ -43,6 +55,8 @@
   </tr>
 </table>
 
+</details>
+
 ## Installation
 The model is built in PyTorch 1.1.0 and tested on Ubuntu 16.04 environment (Python3.7, CUDA9.0, cuDNN7.5).
 
@@ -54,6 +68,7 @@ conda activate pytorch1
 conda install pytorch=1.1 torchvision=0.3 cudatoolkit=9.0 -c pytorch
 pip install matplotlib scikit-image opencv-python yacs joblib natsort h5py tqdm
 ```
+
 
 ## Training
 1. Download the SIDD-Medium dataset from [here](https://www.eecs.yorku.ca/~kamel/sidd/dataset.php)
@@ -121,21 +136,27 @@ python test_enhancement.py --save_images --input_dir ./datasets/fivek_sample_ima
 ```
 
 
+### Results
 
-## Results
 Experiments are performed on five real image datasets for different image processing tasks including, image denoising, super-resolution and image enhancement. Images produced by MIRNet can be downloaded from Google Drive [link](https://drive.google.com/drive/folders/1z6bFP7ydBaQOPmk8n1byYY0xcLx7aBHp?usp=sharing).
 
-### Image Denoising
+<details>
+  <summary> <strong>Image Denoising</strong> (click to expand) </summary>
+<img src = "https://i.imgur.com/te123qk.png" ></details>
 
-<img src = "https://i.imgur.com/te123qk.png" >
+<details>
+  <summary> <strong>Image Super-resolution </strong> (click to expand) </summary>
+<img src = "https://i.imgur.com/pBdUPXa.png" ></details>
 
-### Image Super-resolution 
+<details>
+  <summary> <strong>Image Enhancement</strong> (click to expand) </summary>
+<img src = "https://i.imgur.com/TZRBlux.png" ></details>
 
-<img src = "https://i.imgur.com/pBdUPXa.png" >
+## Other Implementations
+- [Tensorflow](https://github.com/soumik12345/MIRNet) (Soumik Rakshit)
+- [Tensorflow-JS](https://github.com/Rishit-dagli/MIRNet-TFJS) (Rishit Dagli) 
+- [Tensorflow-TFLite](https://github.com/sayakpaul/MIRNet-TFLite-TRT) (Sayak Paul)
 
-### Image Enhancement
-
-<img src = "https://i.imgur.com/TZRBlux.png" >
 
 ## Citation
 If you use MIRNet, please consider citing:
