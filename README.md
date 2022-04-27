@@ -11,6 +11,7 @@
 <hr />
 
 ### News
+- A lightweight, fast and extended version of MIRNet is accepted in **TPAMI**. [Paper](https://www.waqaszamir.com/publication/zamir-2022-mirnetv2/) | [Code](https://github.com/swz30/MIRNetv2)
 
 - Keras Tutorial on MIRNet is available at https://keras.io/examples/vision/mirnet/ 
 
@@ -171,6 +172,7 @@ If you use MIRNet, please consider citing:
 Should you have any question, please contact waqas.zamir@inceptioniai.org
 
 ## Our Related Works
+- Learning Enriched Features for Fast Image Restoration and Enhancement, TPAMI 2022. [Paper](https://www.waqaszamir.com/publication/zamir-2022-mirnetv2/) | [Code](https://github.com/swz30/MIRNetv2)
 - Restormer: Efficient Transformer for High-Resolution Image Restoration, CVPR 2022. [Paper](https://arxiv.org/abs/2111.09881) | [Code](https://github.com/swz30/Restormer)
 - Multi-Stage Progressive Image Restoration, CVPR 2021. [Paper](https://arxiv.org/abs/2102.02808) | [Code](https://github.com/swz30/MPRNet)
 - CycleISP: Real Image Restoration via Improved Data Synthesis, CVPR 2020. [Paper](https://arxiv.org/abs/2003.07761) | [Code](https://github.com/swz30/CycleISP)
